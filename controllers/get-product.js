@@ -1,14 +1,14 @@
-export function makePostProduct(addProduct){
-    return async function postProduct(httpRequest){
+export function makeGetProduct(fetchProduct){
+    return async function getProduct(httpRequest){
         try {
-            const productInfo = httpRequest.body;
-            const added = await addProduct(productInfo);
+            const productId = httpRequest.params.id;
+            const product = await fetchProduct(productId);
             return {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                statusCode: 201,
-                body: added
+                statusCode: 200,
+                body: product
             }
         } catch (error) {
             console.error(error);

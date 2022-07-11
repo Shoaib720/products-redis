@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
-import { postProduct } from './controllers/index.js';
+import { postProduct, getProduct } from './controllers/index.js';
 import { makeExpressCallback } from './callback/index.js';
 
 
@@ -16,6 +16,7 @@ app.get('/', (req, res, _next) => {
     })
 });
 
+app.get('/api/v1/product/:id', makeExpressCallback(getProduct));
 app.post('/api/v1/products', makeExpressCallback(postProduct));
 
 app.listen(PORT, () => {

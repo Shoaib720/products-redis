@@ -6,15 +6,14 @@ export default function makeProductsDB(makeDB){
         insert
     })
 
-    async function findById({ id: _id }){
+    async function findById(id){
         const db = await makeDB();
-        const result = await db.collection('products').find({ _id });
+        const result = await db.collection('products').find({ id });
         const found = await result.toArray();
         if(found.length === 0){
             return null
         }
-        const { _id: id, ...info } = result;
-        return { id, ...info };
+        return found;
     }
 
     async function findByHash(hash) {

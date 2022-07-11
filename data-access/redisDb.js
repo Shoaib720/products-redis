@@ -1,4 +1,4 @@
-export function makeRedisDB (client) {
+export function makeRedisDB (client, config) {
 
     return Object.freeze({
         getValue,
@@ -17,8 +17,7 @@ export function makeRedisDB (client) {
         console.log("connected redis");
         console.log(key);
         console.log(value);
-        const result = await client.set(key, value);
-        console.log(result);
+        await client.setEx(key, config.expiration, value);
         await client.quit();
     }
 }
