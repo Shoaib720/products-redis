@@ -4,7 +4,7 @@ on:
     branches:
       - "development"
     paths-ignore:
-      - "/.github/**"
+      - ".github/workflows/*.yml"
       - "**/README.md"
   workflow_dispatch:
 
