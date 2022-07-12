@@ -8,7 +8,6 @@ on:
 jobs:
   docker-build-and-push:
     runs-on: ubuntu-22.04
-    container: node:16-alpine
     name: 'Docker build and push'
     steps:
       - name: Checkout code
