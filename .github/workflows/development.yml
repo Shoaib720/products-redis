@@ -1,8 +1,8 @@
-name: 'products-service-ci'
+name: 'products-service-ci-development'
 on:
   push:
     branches:
-      - "release"
+      - "development"
   workflow_dispatch:
 
 jobs:
@@ -27,5 +27,5 @@ jobs:
         with:
           push: true
           tags: | 
-            ${{ secrets.DOCKERHUB_USERNAME }}/products-redis:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/products-redis:${{ github.run_id }}-${{ github.run_number }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/products-redis:alpha-latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/products-redis:alpha-${{ github.run_id }}
