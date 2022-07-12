@@ -29,4 +29,4 @@ jobs:
           push: true
           tags: | 
             ${{ secrets.DOCKERHUB_USERNAME }}/products-redis:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/products-redis:${{ GITHUB_RUN_NUMBER }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/products-redis:${GITHUB_RUN_NUMBER}
