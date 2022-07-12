@@ -1,23 +1,29 @@
 version: '3.9'
 services:
   app:
+    image: shoaib1999/products-redis:development
     build:
       context: .
     ports:
       - '3000:3000'
-    environments:
-      - MONGO_URL: 'mongodb://mongo:27017/development'
-      - REDIS_URL: 'redis://redis:6379'
-      - REDIS_CACHE_EXPIRATION_DURATION: 30
+    volumes:
+      - '.:/app'
+    environment:
+      MONGO_URL: 'mongodb://mongo:27017/development'
+      REDIS_URL: 'redis://redis:6379'
+      REDIS_CACHE_EXPIRATION_DURATION: 60
     networks:
       - products_network
+    depends_on:
+      - mongo
+      - redis
   
   mongo:
     image: mongo:5.0
     ports:
       - '27017:27017'
     volumes:
-      - mongo_data: /data/db
+      - 'mongo_data:/data/db'
     networks:
       - products_network
   
@@ -26,7 +32,7 @@ services:
     ports:
       - '6379:6379'
     volumes:
-      - redis_data: /data
+      - 'redis_data:/data'
     networks:
       - products_network
 

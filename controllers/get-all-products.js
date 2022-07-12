@@ -1,14 +1,13 @@
-export function makeGetProduct(fetchProduct){
-    return async function getProduct(httpRequest){
+export function makeGetAllProducts(fetchAllProducts){
+    return async function getAllProducts(httpRequest){
         try {
-            const productId = httpRequest.params.id;
-            const product = await fetchProduct(productId);
+            const products = await fetchAllProducts();
             return {
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 statusCode: 200,
-                body: product
+                body: products
             }
         } catch (error) {
             console.error(error);

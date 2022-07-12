@@ -1,5 +1,4 @@
 export function makeExpressCallback(controller){
-    // console.log(controller);
     return (req, res) => {
         controller(req)
         .then(httpResponse => {

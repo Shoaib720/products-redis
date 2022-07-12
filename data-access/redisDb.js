@@ -14,9 +14,6 @@ export function makeRedisDB (client, config) {
 
     async function setValue(key, value) {
         await client.connect();
-        console.log("connected redis");
-        console.log(key);
-        console.log(value);
         await client.setEx(key, config.expiration, value);
         await client.quit();
     }
