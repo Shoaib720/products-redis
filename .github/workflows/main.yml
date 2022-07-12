@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - "release"
+  workflow_dispatch:
 
 jobs:
   docker-build-and-push:
