@@ -11,7 +11,8 @@ const REDIS_CACHE_EXPIRATION_DURATION = process.env.REDIS_CACHE_EXPIRATION_DURAT
 
 const mongoClient = new MongoClient(MONGO_URL);
 const redisClient = new redis.createClient({
-    url: REDIS_URL
+    url: process.env.REDIS_URL,
+    password: process.env.REDIS_KEY
 })
 
 const redisConfiguration = {
